@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LoOTERA — Unlock the Legend</title>
+<meta name="description" content="Crafted with clean code, sharp logic, and a love for shipping fast.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --background:#0b1020;--foreground:#f7f9fc;--card:#151c30;--muted:#212a42;
+    --muted-foreground:#9aa6bf;--border:rgba(255,255,255,.10);
+    --primary:#e6ebf5;--primary-foreground:#1a2238;--accent:#3b82f6;
+    --radius:.75rem;
+  }
+  html,body{height:100%}
+  body{
+    background:var(--background);color:var(--foreground);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased;position:relative;overflow-x:hidden;
+  }
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+  .bg{position:fixed;inset:0;z-index:-1;overflow:hidden}
+  .blob{position:absolute;width:24rem;height:24rem;border-radius:9999px;filter:blur(64px)}
+  .blob.a{top:-2rem;left:-8rem;background:rgba(230,235,245,.18)}
+  .blob.b{bottom:-2rem;right:-8rem;background:rgba(59,130,246,.20)}
+  .grid{
+    position:absolute;inset:0;
+    background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    background-size:32px 32px;
+  }
+  main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 1.5rem}
+  .wrap{width:100%;max-width:42rem;display:flex;flex-direction:column;gap:2rem}
+  .row{display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;align-items:center;gap:.75rem}
+  .logo{width:2.5rem;height:2.5rem;border-radius:.75rem;display:flex;align-items:center;justify-content:center;
+    font-weight:700;color:var(--primary-foreground);
+    background:linear-gradient(135deg,var(--primary),rgba(230,235,245,.4));
+    box-shadow:0 10px 24px rgba(230,235,245,.20)}
+  .brand span{font-weight:600;letter-spacing:-.01em}
+  .status{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:var(--muted-foreground)}
+  .dot{position:relative;display:inline-flex;width:.5rem;height:.5rem}
+  .dot i{position:absolute;inset:0;border-radius:9999px;background:#22c55e;animation:ping 1.4s cubic-bezier(0,0,.2,1) infinite}
+  .dot b{position:relative;width:.5rem;height:.5rem;border-radius:9999px;background:#22c55e}
+  @keyframes ping{75%,100%{transform:scale(2);opacity:0}}
+  .badge{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);
+    background:rgba(21,28,48,.5);backdrop-filter:blur(6px);border-radius:9999px;
+    padding:.25rem .75rem;font-size:.75rem;color:var(--muted-foreground)}
+  .badge .sep{color:var(--border)}
+  .badge .ok{color:#93c5fd}
+  h1{font-size:2.25rem;line-height:1.05;letter-spacing:-.04em;font-weight:700;margin:1rem 0 0}
+  h1 .grad{background:linear-gradient(90deg,#e6ebf5,#e6ebf5,rgba(230,235,245,.5));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--muted-foreground);font-size:1rem;max-width:32rem;margin-top:1rem}
+  .win{border:1px solid var(--border);border-radius:var(--radius);background:rgba(21,28,48,.6);
+    backdrop-filter:blur(6px);box-shadow:0 25px 50px -12px rgba(0,0,0,.5);overflow:hidden}
+  .bar{display:flex;align-items:center;gap:.5rem;padding:.75rem 1rem;border-bottom:1px solid var(--border);background:rgba(33,42,66,.4)}
+  .bar em{width:.75rem;height:.75rem;border-radius:9999px;display:inline-block}
+  .r{background:rgba(239,68,68,.8)}.y{background:rgba(234,179,8,.8)}.g{background:rgba(34,197,94,.8)}
+  .bar .file{margin-left:.75rem;font-size:.75rem;color:var(--muted-foreground)}
+  pre{padding:1.25rem;font-size:.875rem;line-height:1.7;overflow-x:auto}
+  .cmt{color:var(--muted-foreground)}
+  .kw{color:#93c5fd}
+  .caret{display:inline-block;width:.5rem;height:1rem;background:#93c5fd;vertical-align:middle;margin-left:.125rem;animation:blink 1s steps(1,end) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;text-align:center}
+  .stat{border:1px solid var(--border);border-radius:.5rem;background:rgba(21,28,48,.4);backdrop-filter:blur(6px);padding:.75rem}
+  .stat .v{font-size:1.125rem;font-weight:700}
+  .stat .k{font-size:.625rem;text-transform:uppercase;letter-spacing:.15em;color:var(--muted-foreground);margin-top:.25rem}
+  footer{text-align:center;font-size:.75rem;color:var(--muted-foreground);padding-top:.5rem}
+  footer .h{color:#93c5fd}
+  @media(min-width:640px){h1{font-size:3.75rem}.lead{font-size:1.125rem}}
+</style>
+</head>
+<body>
+<div class="bg"><div class="blob a"></div><div class="blob b"></div><div class="grid"></div></div>
+
+<main>
+  <div class="wrap">
+    <div class="row">
+      <div class="brand">
+        <div class="logo mono">&lt;/&gt;</div>
+        <span class="mono">LoOTERA</span>
+      </div>
+      <div class="status mono">
+        <span class="dot"><i></i><b></b></span> System Online
+      </div>
+    </div>
+
+    <div>
+      <div class="badge mono"><span>v2.O</span><span class="sep">·</span><span class="ok">stable</span></div>
+      <h1>Welcome to the LoOTERA Zone — <br><span class="grad">Where The Magic Happens.</span></h1>
+      <p class="lead">Where innovation meets impact.”
+Smart solutions, seamless experiences — all crafted just for you.</p>
+    </div>
+
+    <div class="win">
+      <div class="bar">
+        <em class="r"></em><em class="y"></em><em class="g"></em>
+        <span class="file mono">welcome.ts</span>
+      </div>
+      <pre class="mono"><code><span class="cmt" id="typed"></span><span class="caret"></span>
+<div><span class="kw">const</span> auth = <span class="kw">await</span> MR.NoOB.init({</div><div><span class="kw">  secure</span>: <span class="kw">true</span>,</div><div><span class="kw">  fast</span>: <span class="kw">true</span>,</div><div><span class="kw">  reliable</span>: <span class="kw">true</span></div><div><span class="kw">});</span></div></code></pre>
+    </div>
+
+    <div class="stats mono">
+      <div class="stat"><div class="v">99.9%</div><div class="k">uptime</div></div>
+      <div class="stat"><div class="v">&lt;50ms</div><div class="k">latency</div></div>
+      <div class="stat"><div class="v">100%</div><div class="k">secure</div></div>
+    </div>
+
+    <footer class="mono"> Developed with <span class="h">♥</span> By MR. NoOB 🥀</footer>
+  </div>
+</main>
+
+<script>
+  var full = "// Built by a coder, for coders.", i = 0, el = document.getElementById("typed");
+  var id = setInterval(function(){ el.textContent = full.slice(0, ++i); if(i >= full.length) clearInterval(id); }, 55);
+</script>
+</body>
+</html>
